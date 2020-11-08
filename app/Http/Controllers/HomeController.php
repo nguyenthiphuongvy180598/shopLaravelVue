@@ -29,7 +29,10 @@ class HomeController extends Controller
             ->orderBy('product_id')->get();
         
         }
-        return  DB::table('tbl_product')->where('product_status', '1')
+        return  DB::table('tbl_product')->join('tbl_category_product', function($join){
+            $join->on('tbl_product.category_id','=','tbl_category_product.category_id')
+            ->where('category_status', '1');
+        })->where('product_status', '1')
         ->orderBy('product_price')->limit(6)->get();
     }
     public function getProductDetails(Request $request)

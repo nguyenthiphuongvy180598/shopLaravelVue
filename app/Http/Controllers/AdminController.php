@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Redirect;
 use Session;
+use Mail;
 session_start();
 
 class AdminController extends Controller
@@ -41,5 +42,19 @@ class AdminController extends Controller
             Session::put('message', 'Incorrect email or password');
             return Redirect::to('/admin-page');
         }
+    }
+    // tmp to test send mail
+    public function sendMail()
+    {
+        $to_name = "Vy Nguyen";
+        $to_email = "vyvynguyen180598@gmail.com";//send to this email
+
+        $data = array("name"=>"Mail send from admincontroller","body"=>"for testing sending email"); //body of mail.blade.php
+    
+        Mail::send('admin.send_mail',$data,function($message) use ($to_name,$to_email){
+            $message->to($to_email)->subject('test mail google');//send this mail with subject
+            $message->from($to_email,$to_name);//send from this mail
+        });
+        return Redirect::to('/dashboard');
     }
 }

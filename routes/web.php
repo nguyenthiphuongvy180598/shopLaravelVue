@@ -42,6 +42,9 @@ Route::get('/delete-product/{product_id}', 'ProductController@deleteProduct');
 Route::get('/manage-orders', 'OrderController@manageOrder');
 Route::get('/view-order/{order_id}', 'OrderController@viewOrder');
 
+//send mail
+Route::get('/send-mail', 'AdminController@sendMail');
+
 // <!-- End Admin Route --> 
 
 // <!-- Start App Route --> 
