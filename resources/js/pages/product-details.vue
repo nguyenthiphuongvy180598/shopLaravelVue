@@ -249,7 +249,7 @@ export default {
             if (res.status === 200) {
                 // this.rowId = res.data;
                 // console.log(this.rowId);
-                alert('them thanh cong')
+                swal("Successful!", "Your product is added!", "success");
             }
         },
     },

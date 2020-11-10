@@ -45,6 +45,10 @@ Route::get('/view-order/{order_id}', 'OrderController@viewOrder');
 //send mail
 Route::get('/send-mail', 'AdminController@sendMail');
 
+//Login facebook
+Route::get('/login-facebook','AdminController@login_facebook');
+Route::get('/admin/callback','AdminController@callback_facebook');
+
 // <!-- End Admin Route --> 
 
 // <!-- Start App Route --> 
@@ -54,10 +58,12 @@ Route::get('get_products', 'HomeController@getProducts');
 Route::get('get_product_details', 'HomeController@getProductDetails');
 Route::get('get_product_recommend', 'HomeController@getRecommendList');
 Route::post('add_to_cart', 'CartController@addToCart');
+Route::post('add_cart_ajax', 'CartController@addCartAjax');
 Route::get('get_Cart', 'CartController@getCart');
 
 Route::post('update_cart', 'CartController@updateCart');
 Route::post('delete_product_cart', 'CartController@deleteProductCart');
+Route::post('delete_cart', 'CartController@deleteCart');
 
 Route::get('login_checkout', 'CheckOutController@loginCheckOut');
 Route::post('add_customer', 'CheckOutController@addCustomer');

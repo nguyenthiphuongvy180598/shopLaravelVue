@@ -39,13 +39,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     @endphp
         <form action="{{URL::to('/admin-dashboard')}}" method="post">
             {{ csrf_field() }}
+            @foreach ($errors->all() as $val)
+             {{$val}}   
+            @endforeach
 			<input type="text" class="ggg" name="admin_email" placeholder="E-MAIL" required="">
 			<input type="password" class="ggg" name="admin_password" placeholder="PASSWORD" required="">
 			<span><input type="checkbox" />Remember Me</span>
 			<h6><a href="#">Forgot Password?</a></h6>
 				<div class="clearfix"></div>
 				<input type="submit" value="Sign In" name="login">
-		</form>
+        </form>
+        <a href="{{url('/login-facebook')}}">Login Facebook</a>
 		{{-- <p>Don't Have an Account ?<a href="registration.html">Create an account</a></p> --}}
 </div>
 </div>
